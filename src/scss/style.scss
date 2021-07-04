@@ -1,1 +1,48 @@
 @use './partials/preset';
+@import './partials/variables';
+@import './partials/fonts';
+
+@import './partials/badges';
+
+body * {
+  font-family: $quicksand;
+  color: $UI-100;
+  box-sizing: border-box;
+}
+
+// BORDER RADIUS
+.br {
+  &1 {
+    border-radius: 2px;
+  }
+  &2 {
+    border-radius: 4px;
+  }
+  &3 {
+    border-radius: 8px;
+  }
+  &4 {
+    border-radius: 16px;
+  }
+}
+
+// COLORS
+.bg-default { background-color: $UI-800; }
+.bg-red { background-color: $CUSTOM-RED; }
+.bg-orange { background-color: $CUSTOM-ORANGE; }
+.bg-yellow { background-color: $CUSTOM-YELLOW; }
+.bg-green { background-color: $CUSTOM-GREEN; }
+.bg-turqoise { background-color: $CUSTOM-TURQOISE; }
+.bg-blue { background-color: $CUSTOM-BLUE; }
+.bg-purple { background-color: $CUSTOM-PURPLE; }
+.bg-magenta { background-color: $CUSTOM-MAGENTA; }
+
+.color-default { color: $UI-100; }
+.color-red { color: $CUSTOM-RED; }
+.color-orange { color: $CUSTOM-ORANGE; }
+.color-yellow { color: $CUSTOM-YELLOW; }
+.color-green { color: $CUSTOM-GREEN; }
+.color-turqoise { color: $CUSTOM-TURQOISE; }
+.color-blue { color: $CUSTOM-BLUE; }
+.color-purple { color: $CUSTOM-PURPLE; }
+.color-magenta { color: $CUSTOM-MAGENTA; }

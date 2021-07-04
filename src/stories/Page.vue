@@ -59,13 +59,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-const vue: any = Vue;
+import { defineComponent } from 'vue';
 
 import './page.css';
 import MyHeader from './Header.vue';
 
-const Page = vue.extend({
+const Page = defineComponent({
   name: 'my-page',
 
   components: { MyHeader },

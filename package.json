@@ -6,8 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "sass ./src/scss/style.scss ./.storybook/style.css && start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "watch-sass": "sass --watch ./src/scss/style.scss:./.storybook/style.css",
+    "build-sass": "sass ./src/scss/style.scss ./.storybook/style.css"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -37,10 +39,12 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "node-sass": "^6.0.1",
+    "postcss": "^8.1.0",
     "sass": "^1.35.1",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^3.0.0",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
     "typescript": "~4.1.5",
-    "vue-loader": "^16.2.0"
+    "vue-loader": "^16.2.0",
+    "webpack": "^4.0.0"
   }
 }
