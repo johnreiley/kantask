@@ -1,14 +1,12 @@
 <template>
   <div class="list-tab-container">
     <div class="list-tab" :class="{'list-tab--active': active}">
-      <div v-if="active" class="list-tab__underlay" :class="[bgColor]"></div>
-      <span class="list-tab__left">
-        <span class="list-tab__icon" :class="iconColor">
-          <global-icons icon="ph-folder-notch" size="24px"></global-icons>
-        </span>
-        <span class="list-tab__text">Work</span>
+      <div class="list-tab__underlay" :class="[bgColor]"></div>
+      <span class="list-tab__icon" :class="iconColor">
+        <global-icons :icon="icon" size="24px"></global-icons>
       </span>
-      <span v-if="count" class="list-tab__count badge">10</span>
+      <span class="list-tab__text" :title="text">{{ text }}</span>
+      <span v-if="count" class="list-tab__count badge">{{ count }}</span>
     </div>
   </div>
 </template>
@@ -30,9 +28,10 @@ export default defineComponent({
   props: {
     color: {
       type: String,
-      default: 'red',
+      default: 'white',
       validator(value: string) {
         return [
+          'white',
           'red', 
           'orange', 
           'yellow', 
@@ -48,7 +47,11 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    count: Number
+    count: Number,
+    icon: {
+      type: String,
+      default: 'ph-folder-notch'
+    }
   },
   computed: {
     bgColor(): string {
@@ -70,6 +73,7 @@ export default defineComponent({
 }
 
 .list-tab {
+  cursor: pointer;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -81,6 +85,12 @@ export default defineComponent({
   justify-content: space-between;
   background-color: $UI-700;
   border-radius: $BR-3;
+  transition: all 0.3s;
+  box-shadow: none;
+
+  &:hover:not([class*="--active"]) {
+    box-shadow: $BlS-3;
+  }
 
   &__underlay {
     position: absolute;
@@ -88,24 +98,37 @@ export default defineComponent({
     top: 0;
     left: 0;
     width: 100%;
+    opacity: 0;
     padding: inherit;
     border-radius: inherit;
     z-index: -1;
+    transition: opacity 0.3s;
   }
 
   &--active {
     background: linear-gradient(90deg, $UI-700+#{'95'} 0%, $UI-700 50%, $UI-700 100%);
+    box-shadow: $BlS-4;
+
+    & .list-tab__underlay {
+      opacity: 1;
+    }
   }
 
-  &__left {
-    display: flex;
-    align-items: center;
+  &__icon, &__text {
+    margin-right: 8px;
   }
 
   &__icon {
     display: inline-flex;
     align-items: center;
-    margin-right: 8px;
+  }
+
+  &__text {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 </style>

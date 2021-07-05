@@ -12,13 +12,26 @@ const Template = (args) => ({
 });
 
 export const ListTabBasic = Template.bind({});
+ListTabBasic.args = {
+  text: 'List Tab'
+}
 
 export const ListTabCount = Template.bind({});
 ListTabCount.args = {
+  text: 'List Tab',
   count: 12
 }
 
+export const ListTabIcon = Template.bind({});
+ListTabIcon.args = {
+  text: 'Home',
+  count: 12,
+  icon: 'ph-house',
+  color: 'white'
+}
+
 const args = {
+  text: 'Colored',
   count: Math.floor(Math.random() * 20),
   active: true
 }
